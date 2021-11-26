@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductModel } from '../Models/product-model';
@@ -19,15 +19,16 @@ export class ProductService {
   } 
 
   /* Get Product X Name */
-  getProductxName(Name: number): Observable<ProductModel>
+  getProductxName(Name: string): Observable<ProductModel>
   {
     return this._http.get<ProductModel>(this._urlBase + 'detailname/' + Name);
   } 
 
   /* Get Product X Id */
-  getProductxId(Id: number): Observable<ProductModel>
+  getProductxId(id: number): Observable<ProductModel>
   {
-    return this._http.get<ProductModel>(this._urlBase + 'detail' + Id);
+    // return this._http.get<ProductModel>(this._urlBase + 'detail' + Id);
+    return this._http.get<ProductModel>(`${this._urlBase}/detail/${id}`);
   }
 
   /* Add Product */
