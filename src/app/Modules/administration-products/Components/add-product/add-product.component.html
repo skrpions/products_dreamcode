@@ -1,1 +1,53 @@
-<p>add-product works!</p>
+<mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+        <div class="col-md-12">
+            <!-- Mat Card Formulario -->
+            <form [formGroup]="formulario" (ngSubmit)="guardarFormulario()" class="shadow" autocomplete="off">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <h4> Nuevo Producto</h4>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <!-- Start Formulario -->
+
+                        <div class="row">
+                            <!-- Producto -->
+                            <mat-form-field appearance="legacy" class="example-container">
+
+                                <mat-label for="Producto">
+                                    <mat-icon>stars</mat-icon> Producto:
+                                </mat-label>
+
+                                <input style="text-transform: uppercase;" formControlName="Producto" type="text"
+                                    id="Producto" matInput #input maxlength="25" />
+                                <!-- <mat-hint align="end">{{ input.value?.length || 0 }}/25</mat-hint> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="row">
+                            <!-- Precio -->
+                            <mat-form-field appearance="legacy" floatLabel="always">
+                                <mat-label for="Precio">
+                                    <mat-icon>stars</mat-icon> Precio:
+                                </mat-label>
+                                <input formControlName="Precio" matInput type="number" class="example-right-align"
+                                    placeholder="0">
+
+                            </mat-form-field>
+                        </div>
+
+                    </mat-card-content>
+                    <mat-card-actions fxLayoutAlign="center">
+                        <button type="submit" mat-raised-button color="primary">
+                            <mat-icon>{{iconbutton}}</mat-icon> {{accion}}
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+
+            <!-- End Formulario -->
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

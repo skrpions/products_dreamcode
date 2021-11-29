@@ -18,7 +18,7 @@ export class ListProductsComponent implements OnInit {
   //formulario : FormGroup;
 
   // Arrays
-  productList : ProductModel[] = [];
+  productList: ProductModel[] = [];
 
   /* Ingreso el nombre de las columnas a mostrar en la tabla */
   displayedColumns: string[] = ['Nombre', 'Precio', 'Acciones'];
@@ -29,9 +29,9 @@ export class ListProductsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // Paginación
 
   constructor(
-    private _fb: FormBuilder, 
+    private _fb: FormBuilder,
     private _productSvc: ProductService,
-    private _router: RouterModule ) { this.construir_formulario(); }
+    private _router: RouterModule) { this.construir_formulario(); }
 
   ngOnInit(): void {
     this.getProducts();
@@ -47,9 +47,9 @@ export class ListProductsComponent implements OnInit {
 
   /* Obtener todos los productos */
   getProducts(): void {
-    this._productSvc.getProducts().subscribe( Products => {
+    this._productSvc.getProducts().subscribe(Products => {
       console.log('Productos> ', Products);
-      
+
       this.productList = Products;
 
       // La fuente de datos para llenar la tabla sera productList
@@ -68,4 +68,13 @@ export class ListProductsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  /* ------------------( Eliminar )--------------- */
+  eliminarItem(id: number): void {
+    this._productSvc.delete(id).subscribe((respuesta: any): void => {
+
+      // Actualizo las listas
+      this.getProducts();
+    });
+  }
+  
 }

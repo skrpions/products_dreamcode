@@ -5,7 +5,7 @@
         <mat-card>
             <div class="row">
                 <!-- Nuevo -->
-                <button type="submit" style="margin-left: 15px;" mat-raised-button color="primary">
+                <button routerLink="/panel-administrativo/add" style="margin-left: 15px;" mat-raised-button color="primary">
                     <mat-icon><span class="material-icons">
                         add_shopping_cart
                         </span></mat-icon> Nuevo Producto
@@ -31,7 +31,7 @@
 
                         <!-- Columna Nombre -->
                         <ng-container matColumnDef="Nombre">
-                            <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+                            <th style="text-align: center" mat-header-cell *matHeaderCellDef> NOMBRE </th>
                             <td style="text-align: center"
                                 mat-cell
                                 *matCellDef="let element">
@@ -41,7 +41,7 @@
 
                         <!-- Columna Precio -->
                         <ng-container matColumnDef="Precio">
-                            <th mat-header-cell *matHeaderCellDef> PRECIO </th>
+                            <th style="text-align: center" mat-header-cell *matHeaderCellDef> PRECIO </th>
                             <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.precio }}
                             </td>
                         </ng-container>
@@ -54,7 +54,7 @@
                                 <button class="pointer"
                                    mat-button
                                    color="primary"
-                                   [routerLink]="['/listado', element.id]"
+                                   [routerLink]="['/panel-administrativo/detail/', element.id]"
                                    title="Ver">
                                     <mat-icon color="primary">
                                         <span class="material-icons">
@@ -64,7 +64,7 @@
                                 </button>
 
                                 <!-- Editar -->
-                                <a class="pointer" mat-button color="primary">
+                                <a [routerLink]="['/panel-administrativo/update/', element.id]" class="pointer" mat-button color="primary">
                                     <mat-icon color="primary">edit</mat-icon>
                                 </a>
                                 <!-- <a (click)="editDialogo(element.Id)" class="pointer" mat-button color="primary">
@@ -72,14 +72,10 @@
                                 </a> -->
 
                                 <!-- Eliminar -->
-                                <a class="pointer" mat-button color="warn"
+                                <a (click)="eliminarItem(element.id)" class="pointer" mat-button color="warn"
                                     title="Eliminar">
                                     <mat-icon color="warn">clear</mat-icon>
                                 </a>
-                                <!-- <a (click)="eliminarItem(element.Id)" class="pointer" mat-button color="warn"
-                                    title="Inhabilitar">
-                                    <mat-icon color="warn">clear</mat-icon>
-                                </a> -->
 
                             </td>
                         </ng-container>

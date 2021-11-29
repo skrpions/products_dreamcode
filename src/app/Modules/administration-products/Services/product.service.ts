@@ -8,7 +8,7 @@ import { ProductModel } from '../Models/product-model';
 })
 export class ProductService {
 
-  private _urlBase : string = 'http://crud-env.eba-apdjqve9.us-east-1.elasticbeanstalk.com/producto/'
+  private _urlBase : string = 'http://crud-env.eba-bkhd7abg.us-east-1.elasticbeanstalk.com/producto/'
 
   constructor(private _http: HttpClient) { }
 
@@ -40,13 +40,13 @@ export class ProductService {
   /* Update Product */
   update(Id: number, Product: ProductModel): Observable<ProductModel>
   {
-    return this._http.put<ProductModel>(this._urlBase + 'update' + Id, Product);
+    return this._http.put<ProductModel>(this._urlBase + 'update/' + Id, Product);
   } 
 
   /* Delete Product */
   delete(Id: number): Observable<any>
   {
-    return this._http.delete<any>(this._urlBase + 'delete' + Id);
+    return this._http.delete<any>(this._urlBase + 'delete/' + Id);
   } 
   
 }

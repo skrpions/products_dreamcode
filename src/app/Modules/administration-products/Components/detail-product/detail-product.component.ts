@@ -23,7 +23,11 @@ export class DetailProductComponent implements OnInit {
       .pipe(
         switchMap( ({id}) => this._productService.getProductxId(id) )
       )
-      .subscribe( product => this.product = product )
+      .subscribe( product => {
+        console.log('Producto Recuperado>',product);
+        
+        this.product = product;
+      } )
   }
 
   regresar() {
