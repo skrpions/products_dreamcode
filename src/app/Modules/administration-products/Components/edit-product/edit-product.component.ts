@@ -3,7 +3,7 @@ import { ProductModel } from './../../Models/product-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../Services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-product',
@@ -33,12 +33,10 @@ export class EditProductComponent implements OnInit {
   /* ------------------( ngOnInit )--------------- */
   ngOnInit(): void { 
     /* Este método muestra en los input del html los valores que le corresponden al Id seleccionado  */
-     // Obtengo el parametro que viene en la url y la desetructuro con ({id})
-     this._activedRoute.params
-     .subscribe(({id})=> this.idProduct = id );
-    
+     // Obtengo el parametro que viene en la url y la desetructuro con ({id})    
     this._activedRoute.params
       .pipe(
+        tap( ({id}) => this.idProduct = id),
         switchMap( ({id}) => this._productSvc.getProductxId(id))
       )
       .subscribe( product => {
@@ -46,8 +44,8 @@ export class EditProductComponent implements OnInit {
         console.log('Producto Recuperado Update>',product);
         this.product = product;
 
+        /* Cargo los valores del id en el formulario */
         this.CargarValoresDelId();
-      
       })
   }
 
