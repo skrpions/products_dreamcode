@@ -1,51 +1,28 @@
-<!--
-<div>
-    <mat-card>
 
-        <mat-card>
-            <div class="row">    
-                
-                <div class="col">
-                    {{ product.nombre }}
-                </div>
+<mat-card>
 
-                
-                    <button type="submit"
-                            style="margin-left: 15px;"
-                            mat-raised-button
-                            color="primary"
-                            (click)="regresar()">
-                        <mat-icon><span class="material-icons">
-                            arrow_back
-                            </span></mat-icon> Regresar
-                    </button>
-                
-            </div>
-        </mat-card>
-    </mat-card>    
- </div>
--->
+    <mat-grid-list cols="1" *ngIf="!product; else divProducto">
+        <mat-grid-tile>
+            <mat-spinner></mat-spinner>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+    <ng-template #divProducto>
+    
+        <div class="row">
+            <h1 style="text-align: center;">Detalle Producto</h1>
+            <mat-divider></mat-divider>
+            <mat-list>
+                <mat-list-item><b>Producto: </b> {{ product.nombre | titlecase }}</mat-list-item>
+                <mat-list-item><b>Precio: </b> {{ product.precio | currency:'' : 'symbol' : '1.0-0'}}</mat-list-item>
+            </mat-list>
+    
+            <br>
+            <button mat-raised-button
+                    color="warn"
+                    (click)="regresar()">
+            </button>
+        </div>
+    </ng-template>
+</mat-card>
 
-<mat-grid-list cols="1" *ngIf="!product; else divProducto">
-    <mat-grid-tile>
-        <mat-spinner></mat-spinner>
-    </mat-grid-tile>
-</mat-grid-list>
-
-<ng-template #divProducto>
-
-    <div class="row">
-        <h1 style="text-align: center;">Producto</h1>
-        <mat-divider></mat-divider>
-        <mat-list>
-            <mat-list-item>{{ product.nombre }}</mat-list-item>
-            <mat-list-item>{{ product.precio }}</mat-list-item>
-        </mat-list>
-
-        <br>
-        <button mat-raised-button
-                color="warn"
-                (click)="regresar()">
-        </button>
-    </div>
-</ng-template>

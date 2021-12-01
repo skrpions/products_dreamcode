@@ -11,6 +11,7 @@ import { EditProductComponent } from './Components/edit-product/edit-product.com
 import { ListProductsComponent } from './Components/list-products/list-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../../Shared/angular-material.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AngularMaterialModule } from '../../Shared/angular-material.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    NgxMaskModule.forChild() // El forRoot esta en app.module y aquí va el child
   ]
 })
 export class AdministrationProductsModule { }

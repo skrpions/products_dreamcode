@@ -42,7 +42,7 @@
                         <!-- Columna Precio -->
                         <ng-container matColumnDef="Precio">
                             <th style="text-align: center" mat-header-cell *matHeaderCellDef> PRECIO </th>
-                            <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.precio }}
+                            <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.precio | currency:'' : 'symbol' : '1.0-0' }}
                             </td>
                         </ng-container>
 
@@ -51,6 +51,7 @@
                             <th style="text-align: center" mat-header-cell *matHeaderCellDef> ACCIONES </th>
                             <td style="text-align: center" mat-cell *matCellDef="let element">
 
+                                <!-- Ver -->
                                 <button class="pointer"
                                    mat-button
                                    color="primary"

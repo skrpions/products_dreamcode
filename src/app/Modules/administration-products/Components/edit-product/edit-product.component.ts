@@ -15,10 +15,9 @@ export class EditProductComponent implements OnInit {
   // Declaro una instancia para controlar todo el formulario
   public formulario: FormGroup;
 
-  hide = true;
   idProduct : number;
-  accion     : string  = 'Guardar';
-  iconbutton : string  = 'save';
+  accion    : string  = 'Guardar';
+  iconbutton: string  = 'save';
   product : ProductModel;
 
   constructor( 

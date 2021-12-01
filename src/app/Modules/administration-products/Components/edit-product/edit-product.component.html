@@ -20,7 +20,7 @@
                                     <mat-icon>stars</mat-icon> Producto:
                                 </mat-label>
 
-                                <input style="text-transform: uppercase;" formControlName="Producto" type="text"
+                                <input formControlName="Producto" type="text"
                                     id="Producto" matInput #input maxlength="25" />
                                 <!-- <mat-hint align="end">{{ input.value?.length || 0 }}/25</mat-hint> -->
                             </mat-form-field>
@@ -32,8 +32,11 @@
                                 <mat-label for="Precio">
                                     <mat-icon>stars</mat-icon> Precio:
                                 </mat-label>
-                                <input formControlName="Precio" matInput type="number" class="example-right-align"
+                                <input formControlName="Precio"
+                                    mask="separator.2" thousandSeparator="."
+                                    matInput type="text" class="example-right-align"
                                     placeholder="0">
+                                    <span matPrefix>$&nbsp;</span>
 
                             </mat-form-field>
                         </div>
